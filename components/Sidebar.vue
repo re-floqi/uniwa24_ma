@@ -1,12 +1,15 @@
 <template>
   <div>
-    <h2>Πανεπιστήμιο Δυτικής Αττικής</h2>
+    <div class="sidebar-logo">
+      <img src="/images/uniwa-logo-new.png" alt="Πανεπιστήμιο Δυτικής Αττικής" />
+    </div>
     <div 
       v-for="(item, index) in menuItems" 
       :key="index" 
       class="menu-item" 
       :class="{ active: activeItem === item.route }"
       @click="navigateTo(item.route)">
+      <span v-if="item.icon" class="menu-icon">{{ item.icon }}</span>
       {{ item.name }}
     </div>
   </div>
@@ -21,8 +24,8 @@ const route = useRoute();
 const activeItem = ref('');
 
 const menuItems = [
-  { name: 'Ανακοινώσεις', route: '/' },
-  { name: 'Πρόγραμμα Μαθημάτων', route: '/schedule' }
+  { name: 'Ανακοινώσεις', route: '/', icon: '📢' },
+  { name: 'Πρόγραμμα Μαθημάτων', route: '/schedule', icon: '📅' }
 ];
 
 onMounted(() => {
@@ -34,3 +37,9 @@ const navigateTo = (path) => {
   router.push(path);
 };
 </script>
+
+<style scoped>
+.menu-icon {
+  margin-right: 8px;
+}
+</style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Πρόγραμμα Μαθημάτων</h1>
+    <h1 class="page-header">Πρόγραμμα Μαθημάτων</h1>
     
     <div v-if="!authenticated" class="password-form">
       <p>Εισάγετε κωδικό πρόσβασης:</p>
@@ -9,14 +9,15 @@
         v-model="password" 
         class="password-input" 
         @keyup.enter="checkPassword"
+        placeholder="Κωδικός πρόσβασης"
       />
       <button @click="checkPassword" class="submit-button">Είσοδος</button>
       <div v-if="error" class="error-message">{{ error }}</div>
     </div>
     
     <div v-else>
-      <div v-if="loading">Φόρτωση προγράμματος...</div>
-      <div v-else-if="scheduleError">{{ scheduleError }}</div>
+      <div v-if="loading" class="loading-message">Φόρτωση προγράμματος...</div>
+      <div v-else-if="scheduleError" class="error-message">{{ scheduleError }}</div>
       <div v-else>
         <table class="schedule-table">
           <thead>

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1>Ανακοινώσεις</h1>
-    <div v-if="loading">Φόρτωση ανακοινώσεων...</div>
-    <div v-else-if="error">{{ error }}</div>
+    <h1 class="page-header">Ανακοινώσεις</h1>
+    <div v-if="loading" class="loading-message">Φόρτωση ανακοινώσεων...</div>
+    <div v-else-if="error" class="error-message">{{ error }}</div>
     <div v-else>
       <div v-for="(announcement, index) in announcements" :key="index" class="announcement">
         <h2>{{ announcement.TITLE }}</h2>
